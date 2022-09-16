@@ -62,7 +62,7 @@ window.addEventListener('load', function(){
                     To understand student-wiki interactions, we also implement statistics cookies; These cookies use a
                     <a href="https://www.privacy-regulation.eu/en/article-4-definitions-GDPR.htm" target="_blank">pseudonimised</a> 
                     identifier to ensure that data cannot be directly used to identify you. 
-                    <br><br><a class="cc-link" href="https://imperialwiki.com/en/guidelines/analysis" target="_blank">Learn more</a> 
+                    <br><br><a class="cc-link" href="https://imperialwiki.com/en/principles/analysis" target="_blank">Learn more</a> 
                     about how we use statistical analysis of usage to extract insights that could be used to improve your academic experience.
                     <br><br>Statistics cookies are implemented through a third-party service and will only be set after consent. 
                     For more details relevant to cookies, please read the full 
