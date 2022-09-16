@@ -66,7 +66,7 @@ window.addEventListener('load', function(){
                     about how we use statistical analysis of usage to extract insights that could be used to improve your academic experience.
                     <br><br>Statistics cookies are implemented through a third-party service and will only be set after consent. 
                     For more details relevant to cookies, please read the full 
-                    <a class="cc-link" href="https://imperialwiki.com/en/guidelines/privacy_policy" target="_blank">privacy policy</a>.`,
+                    <a class="cc-link" href="https://imperialwiki.com/en/principles/collection" target="_blank">privacy policy</a>.`,
                     // <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>
                     primary_btn: {
                         text: 'Accept all',
@@ -95,7 +95,7 @@ window.addEventListener('load', function(){
                             description: `The wiki uses cookies to ensure the basic functionalities of the website and to enhance your academic experience. 
                             You can choose for each category to opt-in/out whenever you want. 
                             For more details relevant to cookies and other sensitive data, 
-                            please read the full <a href="#" class="cc-link">privacy policy</a>.`
+                            please read the full <a href="https://imperialwiki.com/en/principles/collection" class="cc-link">privacy policy</a>.`
                         }, {
                             title: '<a href="https://gdpr.eu/cookies/" target="_blank">Strictly necessary cookies</a>',
                             description: 'These cookies are essential for the proper functioning of the website. Without these cookies, the website would not work properly',
