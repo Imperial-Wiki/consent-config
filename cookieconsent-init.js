@@ -1,42 +1,26 @@
-window.addEventListener('load', function(){
+window.addEventListener('load', function () {
+    // obtain cookieconsent plugin
+    var cookieconsent = initCookieConsent();
 
-    // obtain plugin
-    var cc = initCookieConsent();
-
-    // run plugin with your configuration
-    cc.run({
+    // run plugin with config object
+    cookieconsent.run({
+        autorun: true,
         current_lang: 'en',
-        autoclear_cookies: true,                   // default: false
-        page_scripts: true,                        // default: false
-
-        // mode: 'opt-in'                          // default: 'opt-in'; value: 'opt-in' or 'opt-out'
-        // delay: 0,                               // default: 0
-        // auto_language: '',                      // default: null; could also be 'browser' or 'document'
-        // autorun: true,                          // default: true
-        force_consent: true,                   // default: false
-        // hide_from_bots: false,                  // default: false
-        // remove_cookie_tables: false             // default: false
-        // cookie_name: 'cc_cookie',               // default: 'cc_cookie'
-        // cookie_expiration: 182,                 // default: 182 (days)
-        // cookie_necessary_only_expiration: 182   // default: disabled
-        // cookie_domain: location.hostname,       // default: current domain
-        // cookie_path: '/',                       // default: root
-        // cookie_same_site: 'Lax',                // default: 'Lax'
-        // use_rfc_cookie: false,                  // default: false
-        // revision: 0,                            // default: 0
+        autoclear_cookies: true,
+        page_scripts: true,
+        force_consent: true, // forces the user to either opt-in or opt-out before proceeding to the website
 
         onFirstAction: function(user_preferences, cookie){
-            // callback triggered only once on the first accept/reject action
+            // callback triggered only once
         },
 
         onAccept: function (cookie) {
-            // callback triggered on the first accept/reject action, and after each page load
+            // ... cookieconsent accepted
         },
 
-        onChange: function (cookie, changed_categories) {
-            // callback triggered when user changes preferences after consent has already been given
+        onChange: function (cookie, changed_preferences) {
+            // ... cookieconsent preferences were changed
         },
-
 
         gui_options: {
             consent_modal: {
@@ -52,9 +36,8 @@ window.addEventListener('load', function(){
             }
         },
 
-
         languages: {
-            'en': {
+            en: {
                 consent_modal: {
                     title: 'Data Protection',
                     description: `The wiki uses <a href="https://gdpr.eu/cookies/" target="_blank">strictly necessary cookies</a>
@@ -67,27 +50,27 @@ window.addEventListener('load', function(){
                     <br><br>Statistics cookies are implemented through a third-party service and will only be set after consent. 
                     For more details relevant to cookies, please read the full 
                     <a class="cc-link" href="https://imperialwiki.com/en/principles/collection" target="_blank">privacy policy</a>.`,
-                    // <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>
+                    // <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>                   
                     primary_btn: {
-                        text: 'Accept all',
+                        text: 'Accept',
                         role: 'accept_all'              // 'accept_selected' or 'accept_all'
                     },
                     secondary_btn: {
-                        text: 'Reject (preferences)',
-                        role: 'settings'        // 'settings' or 'accept_necessary'
+                        text: 'Settings',
+                        role: 'settings'                // 'settings' or 'accept_necessary'
                     }
                 },
                 settings_modal: {
                     title: 'Cookie preferences',
                     save_settings_btn: 'Save settings',
                     accept_all_btn: 'Accept all',
-                    reject_all_btn: 'Reject all',
-                    close_btn_label: 'Close',
+                    reject_all_btn: 'Reject all',       // optional, [v.2.5.0 +]
                     cookie_table_headers: [
                         {col1: 'Name'},
                         {col2: 'Domain'},
                         {col3: 'Expiration'},
-                        {col4: 'Description'}
+                        {col4: 'Description'},
+                        {col5: 'Type'}
                     ],
                     blocks: [
                         {
@@ -97,28 +80,28 @@ window.addEventListener('load', function(){
                             For more details relevant to cookies and other sensitive data, 
                             please read the full <a href="https://imperialwiki.com/en/principles/collection" class="cc-link">privacy policy</a>.`
                         }, {
-                            title: '<a href="https://gdpr.eu/cookies/" target="_blank">Strictly necessary cookies</a>',
-                            description: 'These cookies are essential for the proper functioning of the website. Without these cookies, the website would not work properly',
+                            title: 'Strictly necessary cookies',
+                            description: 'These cookies are essential for the proper functioning of the website. Without these cookies, the website would not work properly.',
                             toggle: {
                                 value: 'necessary',
                                 enabled: true,
-                                readonly: true          // cookie categories with readonly=true are all treated as "necessary cookies"
+                                readonly: true
                             }
                         }, {
                             title: 'Statistics cookies',
-                            description: `These cookies collect information about your usage on the website (the pages you visited and your interactions with the page).
-                            All of the data is pseudonymised and cannot directly be used to identify you.`,
+                            description: 'These cookies collect information about how you use the website, which pages you visited, and which links you clicked on. All of the data is pseudonymised and cannot directly be used to identify you.',
                             toggle: {
-                                value: 'analytics',     // your cookie category
+                                value: 'analytics',
                                 enabled: false,
                                 readonly: false
                             },
-                            cookie_table: [             // list of all expected cookies
+                            cookie_table: [
                                 {
-                                    col1: '^_ga',       // match all cookies starting with "_ga"
+                                    col1: '^_ga',
                                     col2: 'google.com',
                                     col3: '2 years',
                                     col4: 'description ...',
+                                    col5: 'Permanent cookie',
                                     is_regex: true
                                 },
                                 {
@@ -126,11 +109,12 @@ window.addEventListener('load', function(){
                                     col2: 'google.com',
                                     col3: '1 day',
                                     col4: 'description ...',
+                                    col5: 'Permanent cookie'
                                 }
                             ]
                         }, {
                             title: 'More information',
-                            description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#yourcontactpage">contact us</a>.',
+                            description: 'For any queries in relation to my policy on cookies and your choices, please <a class="cc-link" href="#yourwebsite">contact me</a>.',
                         }
                     ]
                 }
