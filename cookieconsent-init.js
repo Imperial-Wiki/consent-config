@@ -49,7 +49,9 @@ window.addEventListener('load', function () {
                     about how we use statistical analysis of usage to extract insights that could be used to improve your academic experience.
                     <br><br>Statistics cookies are implemented through a third-party service and will only be set after consent. 
                     For more details relevant to cookies, please read the full 
-                    <a class="cc-link" href="https://imperialwiki.com/en/principles/collection" target="_blank">privacy policy</a>.`,
+                    <a class="cc-link" href="https://imperialwiki.com/en/principles/collection" target="_blank">privacy policy</a>.
+                    Your account name, email, date of creation, and last login time is recorded. This is built into Wiki.js
+                    and does not involve cookies.`,
                     // <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>                   
                     primary_btn: {
                         text: 'Accept',
